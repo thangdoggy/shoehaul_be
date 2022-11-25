@@ -9,7 +9,13 @@ import {
   ProductInfo,
 } from "./pages";
 
-import { Login, CreateAccount , ForgotPassword, NewPassword } from "./pages";
+import {
+  Login,
+  CreateAccount,
+  ForgotPassword,
+  NewPassword,
+  UserInfo,
+} from "./pages";
 import "./App.css";
 
 const App = () => {
@@ -21,8 +27,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/home" element={<Homepage />} />
-            <Route path="/products" element={<AllShoes />} />
-            
+            <Route path="/products" element={<AllShoes itemsPerPage={9} />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signin" element={<CreateAccount />} />
@@ -31,6 +36,7 @@ const App = () => {
             <Route path="/products/:productID" element={<ProductInfo />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newpassword" element={<NewPassword />} />
+            <Route path="/userinfo" element={<UserInfo />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -8,3 +8,4 @@ export { default as Login } from "./signin/Login";
 export { default as CreateAccount } from "./signin/CreateAccount";
 export { default as ForgotPassword } from "./signin/ForgotPassword";
 export { default as NewPassword } from "./signin/NewPassword";
+export { default as UserInfo } from "./UserInfo";
