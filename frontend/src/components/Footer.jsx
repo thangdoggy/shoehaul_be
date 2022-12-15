@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from 'react-router-dom'
 import Logo from "../data/logo/shoeshaul-logo2.png";
 import fb from '../data/homepage/img/fb.png';
 import linkedin from '../data/homepage/img/linkedin.png';
@@ -9,7 +9,8 @@ const Footer = () => {
   return (
     <div>
       <div className="flex justify-between items-center bg-black  bottom-0">
-      <img src={Logo} alt="ShoesHaul Logo" className="mx-3 h-36" />
+      <Link to='/'><img src={Logo} alt="ShoesHaul Logo" className="mx-3 h-36" /></Link>
+      
       <div className="float-right">
         <div className="text-white font-bold text-2xl mx-11">Contact Us</div>
         <div className ='social-apps flex flex-1 justify-between mx-11'>

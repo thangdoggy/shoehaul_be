@@ -9,7 +9,7 @@ const styles = {
         height: '600px'
     },
     button: {
-        backgroundColor: "#FFe2ad",
+        //backgroundColor: "#FFe2ad",
         width: '710px',
         height: '59px',
     },
@@ -32,13 +32,13 @@ export default function ForgetPassword() {
         <Header />
         <div className="bg-center bg-cover bg-no-repeat mt-20 pt-20 text-center" style={styles.background}>
             <form className="rounded-3xl border border-black m-auto" style={styles.fp_background}>
-            <h1 className="text-3xl mt-10 mb-5">Forget Password?</h1>
+            <h1 className="text-3xl mt-10 mb-5 font-bold">Forget Password?</h1>
             <h2 className='text-2xl mb-10'>Enter your email address</h2>
                 <div className="input">
                     <label for="email"></label>
                     <input type="email" name="email" placeholder="Email" className="mb-10 rounded-3xl pl-10 text-base focus:outline-none" style={styles.input}/>
                 </div>
-                <Link to='/newpassword'><button className="rounded-3xl mt-5 mb-5 cursor-pointer border-black border text-2xl font-bold" style={styles.button}>Submit</button></Link>
+                <Link to='/newpassword'><button className="rounded-3xl mt-5 mb-5 cursor-pointer border-black border text-2xl font-bold bg-amber-200 hover:bg-amber-300 transition ease-in duration-200" style={styles.button}>Submit</button></Link>
             </form>
         </div>
         <Footer />

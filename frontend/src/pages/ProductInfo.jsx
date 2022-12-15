@@ -1,11 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import items from "../data/homepage/img/product-logo.jpg";
 import { Footer, Header, ShowRating } from "../components";
-import Data from "../data/fakedata/Data.json";
 import { useParams } from "react-router-dom";
 import { Context } from "../data/Context.js";
-import Comment from "../components/Comment/Comment";
-import AddComment from "../components/Comment/AddComment";
+import Swal from 'sweetalert2'
 import HoverRating from "../components/Comment/Rating";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -66,7 +64,6 @@ export default function ProductInfo({ match }) {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const {
     success: successProductReview,
@@ -94,194 +91,91 @@ export default function ProductInfo({ match }) {
     );
   };
 
-  //   const { addToCart } = useContext(Context);
+
 
   const [selectedSize, setSelectedSize] = useState("36");
 
   const handleChange = (e) => {
     setSelectedSize(e.target.value);
   };
-
+  //   const { addToCart } = useContext(Context);
   //
-  //   const handleAddToCart = () => {
-  //     if (authenticated) {
-  //       //   addToCart(
-  //       //     thisProduct.id,
-  //       //     selectedSize,
-  //       //     thisProduct.price,
-  //       //     thisProduct.name,
-  //       //     thisProduct.color
-  //       //   );
-  //     } else {
-  //       window.location.href = "/login";
-  //     }
+    const handleAddToCart = () => {
+      Swal.fire(
+        'Bravo!',
+        'You added to your cart successfully!',
+        'success'
+      )
+    };
   //   };
-
-  //   const [comments, updateComments] = useState([]);
-  //   const [deleteModalState, setDeleteModalState] = useState(false);
-
-  //   const getData = async () => {
-  //     const res = await fetch("../data/fakedata/Comment.json");
-  //     const data = await res.json();
-  //     updateComments(data.comments);
-  //   };
-
-  //   useEffect(() => {
-  //     localStorage.getItem("comments") !== null
-  //       ? updateComments(JSON.parse(localStorage.getItem("comments")))
-  //       : getData();
-  //   }, []);
-
-  //   useEffect(() => {
-  //     localStorage.setItem("comments", JSON.stringify(comments));
-  //     deleteModalState
-  //       ? document.body.classList.add("overflow--hidden")
-  //       : document.body.classList.remove("overflow--hidden");
-  //   }, [comments, deleteModalState]);
-
-  //   // update score
-  //   let updateScore = (score, id, type) => {
-  //     let updatedComments = [...comments];
-
-  //     if (type === "comment") {
-  //       updatedComments.forEach((data) => {
-  //         if (data.id === id) {
-  //           data.score = score;
-  //         }
-  //       });
-  //     } else if (type === "reply") {
-  //       updatedComments.forEach((comment) => {
-  //         comment.replies.forEach((data) => {
-  //           if (data.id === id) {
-  //             data.score = score;
-  //           }
-  //         });
-  //       });
-  //     }
-  //     updateComments(updatedComments);
-  //   };
-
-  //   // add comments
-  //   let addComments = (newComment) => {
-  //     let updatedComments = [...comments, newComment];
-  //     updateComments(updatedComments);
-  //   };
-
-  //   // add replies
-  //   let updateReplies = (replies, id) => {
-  //     let updatedComments = [...comments];
-  //     updatedComments.forEach((data) => {
-  //       if (data.id === id) {
-  //         data.replies = [...replies];
-  //       }
-  //     });
-  //     updateComments(updatedComments);
-  //   };
-
-  //   // edit comment
-  //   let editComment = (content, id, type) => {
-  //     let updatedComments = [...comments];
-
-  //     if (type === "comment") {
-  //       updatedComments.forEach((data) => {
-  //         if (data.id === id) {
-  //           data.content = content;
-  //         }
-  //       });
-  //     } else if (type === "reply") {
-  //       updatedComments.forEach((comment) => {
-  //         comment.replies.forEach((data) => {
-  //           if (data.id === id) {
-  //             data.content = content;
-  //           }
-  //         });
-  //       });
-  //     }
-
-  //     updateComments(updatedComments);
-  //   };
-
-  //   // delete comment
-  //   let commentDelete = (id, type, parentComment) => {
-  //     let updatedComments = [...comments];
-  //     let updatedReplies = [];
-
-  //     if (type === "comment") {
-  //       updatedComments = updatedComments.filter((data) => data.id !== id);
-  //     } else if (type === "reply") {
-  //       comments.forEach((comment) => {
-  //         if (comment.id === parentComment) {
-  //           updatedReplies = comment.replies.filter((data) => data.id !== id);
-  //           comment.replies = updatedReplies;
-  //         }
-  //       });
-  //     }
-
-  //     updateComments(updatedComments);
-  //   };
-
+  const normal = "border border-black rounded-xl text-2xl mt-5 cursor-pointer hover:bg-black hover:text-white transition ease-in focus:border-4";
+  const afterClick = "border border-black rounded-xl text-2xl mt-5 cursor-pointer bg-black text-white";
   return (
     <>
       <Header />
       <div className="product">
         <div className="product-image mt-20 pt-20 ml-10 grid grid-cols-3">
           <div id="img" className="col-span-2">
-            <img src={items} alt={product.name} style={styles.image} />
+            <img src={product.image} alt={product.name}
+            className='mx-auto w-1/2 shadow-lg'
+            //style={styles.image} 
+          />
           </div>
           <div className="product-info mr-20">
             <h1 className="text-3xl mb-10">{product.name}</h1>
             <h1 className="text-3xl mb-10">${product.price}</h1>
-            <h2 className="text-2xl mb-10">Color: {product.color}</h2>
+            <h2 className="text-xl mb-5">Color: {product.color}</h2>
+            <p className="text-xl mb-5">In stock: {product.stock}</p>
             <h2 className="text-2xl">Size:</h2>
             <ul className="product-size grid grid-cols-4 mb-10 text-center">
               {["36", "37", "38", "39", "40", "41", "42", "43"].map((size) => {
                 return (
-                  <li
-                    key={size}
-                    className="border border-black text-2xl mt-5 cursor-pointer hover:border-2 active:border-4 focus:border-4"
-                    style={styles.li}
+                  <div className={selectedSize === size ? afterClick : normal} style={styles.li}>
+                  <li key={size}
                   >
                     <label>
-                      <input
-                        type="radio"
-                        name="size"
-                        value={size}
-                        checked={size === selectedSize}
-                        onChange={handleChange}
-                        className="hidden"
-                      />
+                      <input type="radio" name="size" value={size}
+                        checked={size === selectedSize} onChange={handleChange}
+                        className='hidden' />
 
-                      <span className="cursor-pointer">{size}</span>
+                      <span className='cursor-pointer'>{size}</span>
                     </label>
                   </li>
+                  </div>
+                  
                 );
               })}
             </ul>
             {product.stock > 0 ? (
               <button
-                style={styles.addToCart}
-                className="border border-black text-3xl rounded-3xl ml-9 hover:bg-amber-300"
+                
+                className="border border-black text-3xl rounded-3xl  shadow-lg hover:bg-amber-200 transition ease-in py-2 px-6"
+                onClick={handleAddToCart}
               >
                 Add to Cart
+                
               </button>
+              
             ) : (
               <button
-                className="border border-black text-3xl rounded-3xl ml-9"
-                style={styles.addToCart}
+                className="border border-black text-3xl rounded-3xl shadow-lg py-2 px-6 bg-slate-300"
+                
                 disabled
               >
                 Out of stock
               </button>
             )}
           </div>
+              
         </div>
+        
         <div
-          className="product-description text-base ml-10 mt-16 mb-16 hover:shadow-md"
+          className="product-description text-base ml-10 mt-16 mb-16"
           style={styles.description}
         >
           <h1 className="text-2xl font-bold mb-5">Description</h1>
-          <p>{product.description}</p>
-          <p>In stock: {product.stock}</p>
+          <p className="leading-7">{product.description}</p>
+          
         </div>
       </div>
 
@@ -293,7 +187,7 @@ export default function ProductInfo({ match }) {
           </span>{" "}
           out of 5
         </p>
-        <div className="flex">
+        <div className="flex mt-5">
           <Rating
             name="read-only"
             precision="0.5"
@@ -305,13 +199,14 @@ export default function ProductInfo({ match }) {
           </Box>
         </div>
 
-        <p className="font-bold">with {product.numReviews} reviews</p>
+        <p className="font-bold mt-5">with {product.numReviews} reviews</p>
 
         <h1 className="text-2xl font-bold mt-5">Comments</h1>
 
         {product.reviews.map((review) => (
-          <div>
-            <p>{review.name}</p>
+
+          <div className="rounded-xl shadow-lg p-5 mt-5 w-1/2">
+            <p className="font-bold">{review.name}</p>
             <div className="flex">
               <Rating
                 name="read-only"
@@ -324,59 +219,50 @@ export default function ProductInfo({ match }) {
                 {labels[Math.round(review.rating * 2) / 2.0]}
               </Box>
             </div>
-            <p>{review.updatedAt.substring(0, 10)}</p>
+            <p className="italic">{review.updatedAt.substring(0, 10)}</p>
             <p>{review.comment}</p>
           </div>
         ))}
       </div>
-      {/* <div className="flex flex-col justify-center gap-1.5 p-5">
-        {comments.map((comment) => (
-          <Comment
-            key={comment.id}
-            commentData={comment}
-            updateScore={updateScore}
-            updateReplies={updateReplies}
-            editComment={editComment}
-            commentDelete={commentDelete}
-            setDeleteModalState={setDeleteModalState}
-          />
-        ))}
-        <AddComment buttonValue={"Post"} addComments={addComments} />
-      </div> */}
-      <span className="text-xl font-bold mb-5">Leave your feedback</span>
+      
+      <span className="text-xl font-bold mb-5 ml-10 mt-10 block">Leave your feedback</span>
       {userInfo ? (
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} className='ml-10 mt-5 mb-10 flex flex-col rounded-xl  w-1/2 p-5 bg-amber-100 shadow-lg'>
           <Form.Group controlId="rating">
-            <Form.Label>Rating</Form.Label>
+            <Form.Label className="font-bold block mb-2">Rating</Form.Label>
             <HoverRating
               handleRating={(newValue) => {
                 setRating(newValue);
               }}
+              
             />
           </Form.Group>
           <Form.Group controlId="comment">
-            <Form.Label>Comment</Form.Label>
+            <Form.Label className="font-bold mb-2 block mt-2">Comment</Form.Label>
             <Form.Control
               as="textarea"
-              row="3"
+              row="10"
               value={comment}
+              placeholder = "Write your comment here"
               onChange={(e) => setComment(e.target.value)}
+              className = 'resize-none h-24 shadow-lg focus:outline-none rounded-xl pl-5 pt-2 w-full mx-auto'
             ></Form.Control>
           </Form.Group>
           <Button
             disabled={loadingProductReview}
             type="submit"
             variant="primary"
+            className = 'font-bold text-white bg-red-500 hover:bg-red-700 transition ease-in rounded-xl mt-5 w-20 py-1'
           >
             Submit
           </Button>
         </Form>
       ) : (
-        <div>
-          Please <Link to="/login">log in</Link> to write a review{" "}
+        <div className="ml-10 mb-10">
+          Please <Link to="/login" className="font-bold">log in</Link> to write a review.{" "}
         </div>
       )}
-
+      
       <Footer />
     </>
   );

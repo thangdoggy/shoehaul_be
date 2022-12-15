@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@material-ui/core": "^4.12.4",
     "@mongoosejs/double": "^0.3.0",
+    "@mui/material": "^5.10.15",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
@@ -20,7 +24,9 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
-    "react-bootstrap": "^2.6.0"
+    "react-bootstrap": "^2.6.0",
+    "react-toastify": "^9.1.1",
+    "sweetalert2": "^11.6.15"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

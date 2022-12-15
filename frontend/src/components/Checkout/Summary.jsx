@@ -4,7 +4,7 @@ import { Context } from '../../data/Context';
 export default function Summary() {
     const {totalItems, totalPrice, VATotal, SUM} = useContext(Context);
     return (
-        <div className='border border-black p-2.5'>
+        <div className='shadow-lg rounded-xl p-2.5'>
             <h1 className="text-2xl font-bold ">Summary</h1>
                     <div className="flex justify-between">
                     <div>

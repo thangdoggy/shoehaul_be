@@ -1,0 +1,182 @@
+[
+    {
+     "Name": "DunkHigh",
+     "Brand": "Nike",
+     "Color": "Black White",
+     "Size": 36,
+     "Stock": 1,
+     "Price": 439,
+     "Description": "Men's Nike Dunk Hi Retro \"Game Royal\" White\/Game Royal-Total Orange"
+    },
+    {
+     "Name": "SuperStar",
+     "Brand": "Adidas",
+     "Color": "White",
+     "Size": 43,
+     "Stock": 3,
+     "Price": 125,
+     "Description": "Serrated stripes and framed adidas Superstar logos exude genuine original style."
+    },
+    {
+     "Name": "Ultraboost",
+     "Brand": "Adidas",
+     "Color": "Black",
+     "Size": 41,
+     "Stock": 2,
+     "Price": 535,
+     "Description": "These Ultraboost running shoes offer comfort and resilience."
+    },
+    {
+     "Name": "Unisex",
+     "Brand": "Converse",
+     "Color": "Black White",
+     "Size": 42,
+     "Stock": 2,
+     "Price": 90,
+     "Description": "These are really good shoes and are genuine."
+    },
+    {
+     "Name": "KyrieFlytrap",
+     "Brand": "Nike",
+     "Color": "Black",
+     "Size": 37,
+     "Stock": 2,
+     "Price": 85,
+     "Description": "Nike Kyrie Flytrap III Mens Basketball Trainers BQ3060 Sneakers Shoes"
+    },
+    {
+     "Name": "Low-Top",
+     "Brand": "Vans",
+     "Color": "Black",
+     "Size": 38,
+     "Stock": 2,
+     "Price": 114,
+     "Description": "Vans Camden Platform is a Classic low-top style, featuring a double-stitched upper for durability, metal eyelets and signature rubber waffle outsole. Vulcanized construction offers increased comfort."
+    },
+    {
+     "Name": "Chuck",
+     "Brand": "Converse",
+     "Color": "White",
+     "Size": 40,
+     "Stock": 3,
+     "Price": 120,
+     "Description": "It started in sport. Now we're taking it to the beach. The Converse Women's Chuck Taylor All Star Shoreline Linen Slip On Sneaker is a relaxed and reconstructed take on the original, with an elasticized collar and knotted laces. Easy to kick on and off. OrthoLite is a trademark of O2 Partners, LLC."
+    },
+    {
+     "Name": "Unisex",
+     "Brand": "Vans",
+     "Color": "Gray",
+     "Size": 36,
+     "Stock": 1,
+     "Price": 389,
+     "Description": "Made with padded tongue collar"
+    },
+    {
+     "Name": "Graff",
+     "Brand": "Vans",
+     "Color": "Black Blue",
+     "Size": 38,
+     "Stock": 1,
+     "Price": 97,
+     "Description": "Our shop is a reliable wholesale and retail online store, offering diverse and high-quality products."
+    },
+    {
+     "Name": "Unisex-Adult",
+     "Brand": "Nike",
+     "Color": "White",
+     "Size": 39,
+     "Stock": 2,
+     "Price": 94,
+     "Description": "Make every move count in the Nike precision iii basketball shoe. This all-purpose mid top delivers a comfortable combination of cushioning and containment. Its lightweight midsole and multi-directional traction team up for soft steps and quick cuts."
+    },
+    {
+     "Name": "Running",
+     "Brand": "Adidas",
+     "Color": "Black White",
+     "Size": 39,
+     "Stock": 3,
+     "Price": 345,
+     "Description": "With each stride, the adidas 4DFWD 2 midsole compresses forward, reducing braking force and converting impact energy into forward motion."
+    },
+    {
+     "Name": "ChuckTaylor",
+     "Brand": "Converse",
+     "Color": "Black",
+     "Size": 38,
+     "Stock": 1,
+     "Price": 160,
+     "Description": "14.57 x 11.69 x 4.96 inches"
+    },
+    {
+     "Name": "MenAir",
+     "Brand": "Nike",
+     "Color": "Blue",
+     "Size": 41,
+     "Stock": 3,
+     "Price": 89,
+     "Description": "The wildhorse 4, with phylon midsole with oversized zoom air unit that favors heel support, is a shoe suitable for athletes who need more cushioning and comfort over long distances, races and\/ or walks. With a well-structured upper, foam padding and excellently lined inside, this shoe is made to protect the foot by wrapping it in a feeling of comfort, safety and stability. Flywire lacing system, with laces passing diagonally across the instep."
+    },
+    {
+     "Name": "AirCrater",
+     "Brand": "Nike",
+     "Color": "Blue",
+     "Size": 43,
+     "Stock": 1,
+     "Price": 128,
+     "Description": "When it fits this good and looks this great, it doesn’t need a Swoosh. From its Crater rubber outsole to its woven, checkerboard textile detailing to its stretchy, “hug your foot” fabric and Nike Air cushioning, the Huarache is bragging rights for your feet."
+    },
+    {
+     "Name": "Chooka",
+     "Brand": "Vans",
+     "Color": "Rainbow",
+     "Size": 39,
+     "Stock": 2,
+     "Price": 80,
+     "Description": "Classic lace-up sneaker with almond-round toe in fresh white with dual side flanking stripe detailing in rainbow."
+    },
+    {
+     "Name": "Reef",
+     "Brand": "Vans",
+     "Color": "Brown",
+     "Size": 38,
+     "Stock": 3,
+     "Price": 37,
+     "Description": "We designed the Cushion Coast to have it all: it’s super lightweight, easy to slip on and off, and provides amazing Cushioned Comfort, all wrapped up in casual, go-anywhere style."
+    },
+    {
+     "Name": "Running4",
+     "Brand": "Adidas",
+     "Color": "White",
+     "Size": 37,
+     "Stock": 2,
+     "Price": 436,
+     "Description": "A rubber Continental outsole provides traction on dry and wet surfaces to keep you on track in all weather conditions, and a new structurally-hugging adidas PRIMEKNIT+ upper provides support for movement."
+    },
+    {
+     "Name": "Rockport",
+     "Brand": "Converse",
+     "Color": "Black",
+     "Size": 36,
+     "Stock": 1,
+     "Price": 75,
+     "Description": "Where athletic meets fashion with the grand crosscourt."
+    },
+    {
+     "Name": "Cole",
+     "Brand": "Converse",
+     "Color": "Brown",
+     "Size": 43,
+     "Stock": 2,
+     "Price": 210,
+     "Description": "Blucher oxford upper in casual leathers, with crafted welt detail. Fully padded sock lining for ultimate comfort."
+    },
+    {
+     "Name": "Tour360",
+     "Brand": "Adidas",
+     "Color": "White",
+     "Size": 42,
+     "Stock": 2,
+     "Price": 326,
+     "Description": "The shoe has a BOOST midsole that returns energy with every stride."
+    }
+   ]

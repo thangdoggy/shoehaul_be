@@ -25,7 +25,7 @@ const styles = {
     border: "1px solid #000000",
   },
   button: {
-    backgroundColor: "#FFe2ad",
+    //backgroundColor: "#FFe2ad",
     width: "710px",
     height: "59px",
   },
@@ -75,7 +75,7 @@ export default function Signin() {
           className="rounded-3xl border border-black m-auto"
           style={styles.signup_background}
         >
-          <h1 className="text-3xl mt-10 mb-10">Create new account</h1>
+          <h1 className="text-3xl mt-10 mb-10 font-bold">Create new account</h1>
           <form onSubmit={submitHandler}>
             <div className="input">
               <label for="username"></label>
@@ -145,7 +145,7 @@ export default function Signin() {
             </div>
             <button
               id="signin-button"
-              className="rounded-3xl mt-5 mb-5 cursor-pointer border-black border text-2xl font-bold"
+              className="rounded-3xl mb-5 cursor-pointer border-black border text-2xl font-bold bg-amber-200 hover:bg-amber-300 transition ease-in duration-200"
               style={styles.button}
             >
               Sign Up

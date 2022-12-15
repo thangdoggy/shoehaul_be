@@ -6,7 +6,7 @@ import logo from '../../data/homepage/img/logo-billing-detail.png'
 export default function ShoeItem() {
   const {ShoppingCartItem} = useContext(Context);
   return (
-    <div className='mt-20 border border-black p-2.5'>
+    <div className='mt-20 shadow-lg rounded-xl p-2.5'>
       <h1 className="text-2xl font-bold mb-5">Shopping List</h1>
       {ShoppingCartItem.map((item) => {
         const {id, name, size, color, price, quantity} = item;

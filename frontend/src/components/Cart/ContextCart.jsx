@@ -10,7 +10,7 @@ const styles = {
     },
     checkout : {
     width: '200px',
-    backgroundColor: '#fbeaab'
+    //backgroundColor: '#fbeaab'
   }
 }
 
@@ -41,7 +41,7 @@ const ContextCart = () => {
             })}
           </div>
           <div className="text-center">
-            <div id='summary' className="border border-black p-2.5 text-left leading-8">
+            <div id='summary' className="rounded-xl p-2.5 text-left leading-8  shadow-lg">
                 <h1 className="text-2xl font-bold ">Summary</h1>
                 <div className="flex justify-between">
                   <div>
@@ -56,7 +56,7 @@ const ContextCart = () => {
                   </div>
                 </div>
             </div>
-            <Link to= '/checkout'><button className="mt-10 font-bold text-2xl object-fill rounded-3xl border border-black p-2.5" 
+            <Link to= '/checkout'><button className="mt-10 font-bold text-2xl object-fill rounded-3xl p-2.5 hover:bg-black hover:text-white shadow-lg transition ease-in" 
             style={styles.checkout}>Checkout</button></Link>
           </div>
         </div>
