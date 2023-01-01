@@ -1,14 +1,17 @@
 import React from 'react'
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { Context } from '../../data/Context';
 import logo from '../../data/homepage/img/logo-billing-detail.png'
 
 export default function ShoeItem() {
-  const {ShoppingCartItem} = useContext(Context);
+  //const {ShoppingCartItem} = useContext(Context);
+  const cart = useSelector(state => state.cart);
+  const {cartItems} = cart;
   return (
     <div className='mt-20 shadow-lg rounded-xl p-2.5'>
       <h1 className="text-2xl font-bold mb-5">Shopping List</h1>
-      {ShoppingCartItem.map((item) => {
+      {cartItems.map((item) => {
         const {id, name, size, color, price, quantity} = item;
         return (
           <div key={id} className="grid grid-cols-2 pb-2.5">

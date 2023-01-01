@@ -19,6 +19,7 @@ import { Form, Button } from "react-bootstrap";
 
 import { Rating, Box } from "@mui/material";
 import { productCreateReducer } from "../reducers/productReducers";
+import { addToCart } from "../actions/cartActions";
 
 const styles = {
   image: {
@@ -94,18 +95,20 @@ export default function ProductInfo({ match }) {
 
 
   const [selectedSize, setSelectedSize] = useState("36");
-
+  const dispatch2 = useDispatch();
   const handleChange = (e) => {
     setSelectedSize(e.target.value);
   };
   //   const { addToCart } = useContext(Context);
   //
-    const handleAddToCart = () => {
+    const handleAddToCart = (e) => {
+      e.preventDefault();
       Swal.fire(
         'Bravo!',
         'You added to your cart successfully!',
         'success'
       )
+      dispatch2(addToCart(productID, selectedSize));
     };
   //   };
   const normal = "border border-black rounded-xl text-2xl mt-5 cursor-pointer hover:bg-black hover:text-white transition ease-in focus:border-4";

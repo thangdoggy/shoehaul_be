@@ -1,8 +1,10 @@
-import React , { useContext } from "react";
+import React , { useContext, useEffect } from "react";
 import { Header, Footer } from "../../components";
 import Items from './Items';
 import { Link } from "react-router-dom";
 import { Context } from "../../data/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { getSUM, getTotalItems, getTotalPrice, getVAT } from "../../actions/cartActions";
 
 const styles = {
     context : {
@@ -15,8 +17,18 @@ const styles = {
 }
 
 const ContextCart = () => {
-    const {ShoppingCartItem, totalItems, totalPrice, VATotal, SUM} = useContext(Context);
-    if (ShoppingCartItem.length === 0) { 
+    //const {ShoppingCartItem, totalItems, totalPrice, VATotal, SUM} = useContext(Context);
+    const cart = useSelector((state) => state.cart);
+    const { cartItems, totalItems, totalPrice, VATotal, SUM } = cart;
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getTotalPrice(cartItems));
+      dispatch(getTotalItems(cartItems));
+      dispatch(getVAT(cartItems));
+      dispatch(getSUM(cartItems));
+    }
+    , [cartItems]);
+    if (cartItems.length === 0) { 
         return (
             <>
                 <Header />
@@ -36,7 +48,7 @@ const ContextCart = () => {
         <h1 className='text-3xl  mt-5 mb-10 font-bold'>Your cart</h1>
         <div className="grid grid-cols-5">
           <div id='list-cart-items'  className='col-span-4'>
-            {ShoppingCartItem.map((item) => {
+            {cartItems.map((item) => {
               return <Items key={item.id} {...item} />;
             })}
           </div>
@@ -51,7 +63,7 @@ const ContextCart = () => {
                   </div>
                   <div className="text-right">
                     <p>${totalPrice}</p>
-                    <p>{VATotal}</p>
+                    <p>${VATotal}</p>
                     <p>${SUM}</p>
                   </div>
                 </div>
