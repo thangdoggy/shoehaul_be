@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import items from "../data/homepage/img/product-logo.jpg";
 import { Footer, Header, ShowRating } from "../components";
 import { useParams } from "react-router-dom";
-import { Context } from "../data/Context.js";
 import Swal from 'sweetalert2'
 import HoverRating from "../components/Comment/Rating";
 

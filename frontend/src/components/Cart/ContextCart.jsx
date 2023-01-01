@@ -1,8 +1,7 @@
-import React , { useContext, useEffect } from "react";
+import React , { useEffect } from "react";
 import { Header, Footer } from "../../components";
 import Items from './Items';
 import { Link } from "react-router-dom";
-import { Context } from "../../data/Context";
 import { useDispatch, useSelector } from "react-redux";
 import { getSUM, getTotalItems, getTotalPrice, getVAT } from "../../actions/cartActions";
 

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../components";
 import ContextCart from "../components/Cart/ContextCart";
-import { ContextProvider } from "../data/Context";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -49,9 +48,7 @@ const Cart = () => {
     );
   } else {
     authen = (
-      <ContextProvider>
         <ContextCart />
-      </ContextProvider>
     );
   }
   return <>{authen}</>;
