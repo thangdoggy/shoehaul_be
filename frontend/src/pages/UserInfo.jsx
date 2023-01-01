@@ -23,59 +23,41 @@ export default function UserInfo() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  dispatch(getUserDetails(userInfo._id));  
-  const [disabled, setDisabled] = useState(false);
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user } = userDetails;
+  const dispatch2 = useDispatch();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   //Link to user data
   useEffect(() => {
-      document.getElementById("name").value = userInfo.name;
-      document.getElementById("email").value = userInfo.email;
-      document.getElementById("phone").value = userInfo.phone;
-      // //console.log(userInfo);
-      document.getElementById("address").value = userInfo.address;      
+    dispatch(getUserDetails("profile"));  
   }, []);
 
-  //Allow user to edit their information
-  const [valueButton, SetValueButton] = useState("Edit");
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setDisabled(!disabled);
-    const content = document.getElementById("button").value;
-    if (content === "Edit") {
-      
-      const name = document.getElementById("name").value;
-      const address = document.getElementById("address").value;
-      dispatch(updateUserProfile(userLogin));
-      SetValueButton("Save");
-    } else {
-      SetValueButton("Edit");
-      
-      
-      //const email = document.getElementById("email").value;
-      //const phone = document.getElementById("phone").value;
-      
-      //Access and update user info in local storage - nodejs
-      // const user_info = {
-      //   id: userx.id,
-      //   name: name,
-      //   email: email,
-      //   phone: phone,
-      //   address: address,
-      //   password: userx.password,
-      // };
-      // User[userx.id - 1] = user_info;
-      // localStorage.setItem("userID", JSON.stringify(userx.id));
-      
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setEmail(user.email);
+      setPhone(user.phone);
+      setAddress(user.address);
     }
-  };
+  }, [dispatch2, user]);
+  //Allow user to edit their information
+  const submitHandler = (e) => {
+    //e.preventDefault();
+    dispatch2(updateUserProfile({ id: user._id, name, email, phone, address }));
+  }
+  console.log(user);
   return (
     <div>
       <Header />
       <div className="mt-20 pt-5">
         <h1 className="text-3xl ml-14 mt-5 mb-10 font-bold">
-          Hello, {userInfo.name}
+          Hello, {user.name}
         </h1>
-        <form className="text-center mx-auto mb-10" style={styles.form}>
+        <form className="text-center mx-auto mb-10" style={styles.form} onSubmit = {submitHandler}>
           <fieldset className="shadow-lg rounded-xl ">
             <legend>
               <img
@@ -94,19 +76,21 @@ export default function UserInfo() {
                   placeholder="Name"
                   id="name"
                   className="mt-2 mb-5 shadow-lg focus:outline-none rounded-2xl pl-5"
-                  disabled={!disabled}
+                  value={name || ""}
                   style={styles.input}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="mt-5">
                 <label htmlFor="email">Email</label>
                 <br />
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   id="email"
+                  value={email || ""}
                   className="mt-2 mb-5 shadow-lg focus:outline-none rounded-2xl pl-5"
-                  disabled
+                  onChange={(e) => setEmail(e.target.value)}
                   style={styles.input}
                 />
               </div>
@@ -117,8 +101,9 @@ export default function UserInfo() {
                   type="text"
                   placeholder="Phone number"
                   id="phone"
+                  value={phone || ""}
                   className="mt-2 mb-5 shadow-lg focus:outline-none rounded-2xl pl-5"
-                  disabled
+                  onChange={(e) => setPhone(e.target.value)}
                   style={styles.input}
                 />
               </div>
@@ -129,8 +114,9 @@ export default function UserInfo() {
                   type="text"
                   placeholder="Address"
                   id="address"
+                  value={address || ""}
+                  onChange={(e) => setAddress(e.target.value)}
                   className="mt-2 mb-5 shadow-lg focus:outline-none rounded-2xl pl-5"
-                  disabled={!disabled}
                   style={styles.input}
                 />
               </div>
@@ -140,11 +126,11 @@ export default function UserInfo() {
             </div>
             <div>
               <input
-                type="button"
+                type="submit"
                 id="button"
                 className="rounded-2xl mt-5 mb-5 font-bold cursor-pointer bg-sky-500 hover:bg-sky-700 hover:text-white py-2 px-6 transition ease-in"
-                onClick={(e) => handleClick(e)}
-                value={valueButton}
+                //onClick={(e) => handleClick(e)}
+                value="Update Info"
               />
             </div>
           </fieldset>

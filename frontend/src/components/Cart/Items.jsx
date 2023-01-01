@@ -1,9 +1,7 @@
 import React from 'react'
-import { AiOutlineClose } from "react-icons/ai";
-import logo from '../../data/homepage/img/logo-cart.png'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import Swal from 'sweetalert2';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { decrement, increment, removeFromCart } from '../../actions/cartActions';
 const styles = {
   select: {
@@ -17,10 +15,8 @@ const styles = {
 
 export default function Items({ product, name, size, color, price, quantity, image }) {
   //const { removeItem, increment, decrement } = useContext(Context);
-  const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
-  const { cartItems } = cart;
-  const handleRemove = (id) => {
+  const handleRemove = (product, size) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

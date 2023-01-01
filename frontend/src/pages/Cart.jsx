@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../components";
 import ContextCart from "../components/Cart/ContextCart";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const styles = {
   button: {
@@ -21,7 +20,6 @@ const Cart = () => {
   //     setAuthenticated(true);
   //   }
   // }, []);
-  const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;

@@ -20,6 +20,7 @@ const styles = {
   },
 };
 export default function BillingDetail() {
+<<<<<<< HEAD
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -29,6 +30,17 @@ export default function BillingDetail() {
     document.getElementById("phone").value = userInfo.phone;
     document.getElementById("address").value = userInfo.address;
   };
+=======
+  
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user } = userDetails;
+  const handleClick = (event) => {
+    event.preventDefault();
+    document.getElementById('name').value = user.name;
+    document.getElementById('phone').value = user.phone;
+    document.getElementById('address').value = user.address;
+  }
+>>>>>>> 3919fdc0adc38967d45fea2e88396e3f2b7f1214
   const [selectedPayment, setSelectedPayment] = React.useState("COD");
   const paymentMethod = [
     {
