@@ -29,10 +29,18 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    cartItems: [
+      {
+        qty: { type: Number, required: true },
+        size: {type: Number, required: true}, 
+        product: {type: String,required: true,},
+      },
+    ],
   },
   {
     timestamps: true,
   }
+  
 );
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
