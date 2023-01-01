@@ -9,17 +9,13 @@ const orderSchema = mongoose.Schema(
       },
       orderItems: [
         {
-          name: { type: String, required: true },
-          qty: { type: Number, required: true },
-          image: { type: String},
-          price: { type: Number, required: true },
-          size: {type: Number, required: true}, 
-          color: {type: String, required: true},
-          product: {
-            type: String,
-            required: true,
-            ref: 'Product',
-          },
+            countInStock: { type: Number, required: true },
+            image: { type: String, required: true },
+            name: { type: String, required: true },
+            price: { type: Number, required: true },
+            product: { type: String, required: true },
+            quantity: { type: Number, required: true },
+            size: { type: String, required: true },
         },
       ],
       shippingAddress: {

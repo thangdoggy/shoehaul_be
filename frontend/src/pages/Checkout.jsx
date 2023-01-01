@@ -3,6 +3,7 @@ import BillingDetail from '../components/Checkout/BillingDetail';
 import ShoeItem from '../components/Checkout/ShoeItem';
 import Summary from '../components/Checkout/Summary';
 import { Header, Footer } from "../components";
+import { useDispatch } from "react-redux";
 const Checkout = () => {
 
   return (

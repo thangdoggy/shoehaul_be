@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema(
       {
         qty: { type: Number, required: true },
         size: {type: Number, required: true}, 
-        product: {type: String,required: true,},
+        product: {type: String, required: true,},
       },
     ],
   },
