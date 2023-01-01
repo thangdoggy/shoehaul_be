@@ -5,6 +5,8 @@ import { Footer } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
 import background from "../../data/homepage/img/login-background.png";
 import { login } from "../../actions/userActions";
+import Swal from 'sweetalert2';
+
 
 const styles = {
   background: {
@@ -86,6 +88,12 @@ export default function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    if(error)
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error,
+    })
   };
 
   return (
@@ -103,7 +111,7 @@ export default function Login() {
         >
           <h1 className="text-3xl mt-10 mb-5 font-bold">Welcome back to SHOESHAUL</h1>
           <form onSubmit={submitHandler}>
-            <div id="login-option" className="flex justify-center flex-1">
+            {/* <div id="login-option" className="flex justify-center flex-1">
               <div id="user-option" className="pb-5 text-2xl">
                 <input
                   type="radio"
@@ -114,6 +122,7 @@ export default function Login() {
                 />
                 <label for="user">User</label>
               </div>
+
               <div id="admin-option" className="text-2xl">
                 <input
                   type="radio"
@@ -124,7 +133,7 @@ export default function Login() {
                 />
                 <label for="admin">Admin</label>
               </div>
-            </div>
+            </div> */}
             <div id="login-input">
               <div id="email-input">
                 <label for="username"></label>

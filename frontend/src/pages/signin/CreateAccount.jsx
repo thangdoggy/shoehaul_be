@@ -7,6 +7,8 @@ import { register } from "../../actions/userActions";
 import { Header } from "../../components";
 import { Footer } from "../../components";
 import background from "../../data/homepage/img/signin-background.png";
+import Swal from 'sweetalert2';
+
 
 const styles = {
   background: {
@@ -56,9 +58,19 @@ export default function Signin() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Confirm password not matching",
+      })
     } else {
       dispatch(register(name, email, password, address, phone));
+      if(error)
+      Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error,
+    })
     }
   };
 
