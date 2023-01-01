@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Footer, Header } from "../components";
 import Filter from "../components/Search/Filter";
-import items from "../data/homepage/img/item.png";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { listProducts } from "../actions/productActions";
@@ -44,7 +43,7 @@ const AllProducts = ({ itemsPerPage = 9 }) => {
 
   useEffect(() => {
     dispatch(listProducts());
-  }, [dispatch]);
+  }, []);
   //Filter
   const [resultFound, setResultFound] = useState(true);
   const [list, setList] = useState(Data);

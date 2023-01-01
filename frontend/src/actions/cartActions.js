@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, DECREMENT, GET_TOTAL, INCREMENT } from "../constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, DECREMENT, GET_TOTAL, INCREMENT, SAVE_TO_CART } from "../constants/cartConstants";
 
 export const addToCart = (product, size) => async (dispatch, getState) => {
     const { data } = await axios.get(`http://localhost:5000/api/products/${product}`);
@@ -80,4 +80,11 @@ export const getVAT = (cartItems) => (dispatch, getState) => {
         payload: cartItems
     });
     localStorage.setItem('VAT', JSON.stringify(getState().cart.VATotal));
+}
+
+export const saveToCart = (cartItems) => (dispatch, getState) => {
+    dispatch({
+        type: SAVE_TO_CART,
+        payload: cartItems
+    });
 }

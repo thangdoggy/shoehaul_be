@@ -29,13 +29,24 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    // cartItems: [
+    //   {
+    //     qty: { type: Number, required: true },
+    //     size: {type: Number, required: true}, 
+    //     product: {type: String,required: true,},
+    //   },
+    // ],
     cartItems: [
       {
-        qty: { type: Number, required: true },
-        size: {type: Number, required: true}, 
-        product: {type: String, required: true,},
-      },
-    ],
+        countInStock: { type: Number, required: true },
+        image: { type: String, required: true },
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        product: { type: String, required: true },
+        quantity: { type: Number, required: true },
+        size: { type: String, required: true },
+      }
+    ]
   },
   {
     timestamps: true,

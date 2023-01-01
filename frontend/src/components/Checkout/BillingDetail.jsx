@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createOrder } from "../../actions/orderActions";
 import Swal from "sweetalert2";
 const styles = {
   input: {
@@ -20,18 +19,7 @@ const styles = {
   },
 };
 export default function BillingDetail() {
-<<<<<<< HEAD
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-  const handleClick = (event) => {
-    event.preventDefault();
-    document.getElementById("name").value = userInfo.name;
-    document.getElementById("phone").value = userInfo.phone;
-    document.getElementById("address").value = userInfo.address;
-  };
-=======
-  
   const userDetails = useSelector((state) => state.userDetails);
   const { user } = userDetails;
   const handleClick = (event) => {
@@ -39,8 +27,8 @@ export default function BillingDetail() {
     document.getElementById('name').value = user.name;
     document.getElementById('phone').value = user.phone;
     document.getElementById('address').value = user.address;
+    
   }
->>>>>>> 3919fdc0adc38967d45fea2e88396e3f2b7f1214
   const [selectedPayment, setSelectedPayment] = React.useState("COD");
   const paymentMethod = [
     {
@@ -67,18 +55,9 @@ export default function BillingDetail() {
         text: "Please fill in all the fields!",
       });
     } else {
-      const totalPrice = userInfo.cartItems.reduce((accumulator, object) => {
+      const totalPrice = user.cartItems.reduce((accumulator, object) => {
         return accumulator + object.price;
       }, 0);
-        dispatch(
-          createOrder({
-            orderItems: userInfo.cartItems,
-            shippingAddress: address,
-            paymentMethod: paymentMethod,
-            totalPrice: totalPrice,
-            note: note,
-          })
-        );
 
       Swal.fire("Good job!", "You made purchase successfully!", "success");
       setInterval(() => {

@@ -1,9 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getSUM, getTotalItems, getTotalPrice, getVAT } from '../../actions/cartActions';
 
 export default function Summary() {
     //const {totalItems, totalPrice, VATotal, SUM} = useContext(Context);
     const cart = useSelector(state => state.cart);
+    const {cartItems} = cart;
+    const dispatch = useDispatch();
+    useEffect(
+        () => {
+            dispatch(getTotalPrice(cartItems));
+            dispatch(getTotalItems(cartItems));
+            dispatch(getVAT(cartItems));
+            dispatch(getSUM(cartItems));
+        }
+    ,[]);
     const {totalItems, totalPrice, VATotal, SUM} = cart;
     return (
         <div className='shadow-lg rounded-xl p-2.5'>

@@ -3,4 +3,4 @@ export const CART_REMOVE_ITEM = "CART_REMOVE_ITEM";
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const GET_TOTAL = "GET_TOTAL";
-export const CART_CLEAR_ITEMS = 'CART_RESET'
+export const SAVE_TO_CART = "SAVE_TO_CART";
