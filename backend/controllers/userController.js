@@ -77,6 +77,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       address: user.address,
       phone: user.phone,
       isAdmin: user.isAdmin,
+      cartItems: user.cartItems,
     });
   } else {
     res.status(404);
