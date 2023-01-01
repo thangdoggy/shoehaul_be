@@ -5,6 +5,7 @@ import {
   AllShoes,
   Cart,
   Checkout,
+  Dashboard,
   Homepage,
   ProductInfo,
 } from "./pages";
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newpassword" element={<NewPassword />} />
             <Route path="/userinfo" element={<UserInfo />} />
+            <Route path="/dashboard" element = {<Dashboard />} />
           </Routes>
         </div>
       </BrowserRouter>

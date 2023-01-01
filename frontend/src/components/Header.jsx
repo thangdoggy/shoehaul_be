@@ -31,7 +31,8 @@ const Header = () => {
   const { userInfo } = userLogin;
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
-
+  const userDetails = useSelector((state) => state.userDetails);
+  const {user} = userDetails;
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
@@ -50,7 +51,7 @@ const Header = () => {
         <div className="text-right">
           <Link to='/userinfo'><AiOutlineUser className="cursor-pointer text-3xl m-auto" /></Link>
           
-          <span>Hi, {userInfo.name}</span>
+          <span>Hi, {user.name}</span>
         </div>
         <div
           className="cursor-pointer border-solid border-2 border-slate-900 rounded-full py-1 px-4 hover:shadow-lg my-auto"

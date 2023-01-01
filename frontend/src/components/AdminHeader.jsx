@@ -7,12 +7,12 @@ const AdminHeader = () => {
   const normalLink = "decoration-2";
 
   let login;
-  login = <div className="text-right">
+  login = (<div className="text-right">
       <div className="text-base cursor-pointer border-solid border-2 border-slate-900 rounded-full py-1 px-4 hover:shadow-lg"
           onClick={() => { localStorage.clear(); window.location.href = "/" }}>
           Log Out
       </div>
-  </div>
+  </div>);
 
   return (
     <div

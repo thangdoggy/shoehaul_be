@@ -74,7 +74,13 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfo) navigate(-1);
+    if (userInfo) {
+      if (userInfo.isAdmin) {
+        navigate("/dashboard");
+      } else {
+        navigate(-1);
+      }
+    }
   }, [userInfo]);
 
   const submitHandler = (e) => {

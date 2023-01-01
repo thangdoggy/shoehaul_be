@@ -19,13 +19,14 @@ const styles = {
   }
 }
 export default function BillingDetail() {
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user } = userDetails;
   const handleClick = (event) => {
     event.preventDefault();
-    document.getElementById('name').value = userInfo.name;
-    document.getElementById('phone').value = userInfo.phone;
-    document.getElementById('address').value = userInfo.address;
+    document.getElementById('name').value = user.name;
+    document.getElementById('phone').value = user.phone;
+    document.getElementById('address').value = user.address;
   }
   const [selectedPayment, setSelectedPayment] = React.useState("COD");
   const paymentMethod = [{
