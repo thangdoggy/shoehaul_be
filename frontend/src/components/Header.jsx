@@ -6,7 +6,7 @@ import { listProducts } from "../actions/productActions";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { logout } from "../actions/userActions";
+import { getUserDetails, logout } from "../actions/userActions";
 
 import Logo from "../data/logo/shoeshaul-logo.png";
 import Searchbar from "./Search/Search";
@@ -36,6 +36,9 @@ const Header = () => {
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getUserDetails("profile"));
+  }, []);
   let login;
   if (!userInfo) {
     login = (

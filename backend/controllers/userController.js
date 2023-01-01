@@ -96,6 +96,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.email = req.body.email || user.email;
     user.phone = req.body.phone || user.phone;
     user.address = req.body.address || user.address;
+    user.cartItems = req.body.cartItems || user.cartItems;
     if (req.body.password) {
       user.password = req.body.password;
     }
@@ -108,7 +109,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
-      address: user.address,
+      address: updatedUser.address,
+      cartItems: updatedUser.cartItems,
     });
   } else {
     res.status(404);
