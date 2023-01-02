@@ -11,14 +11,14 @@ function Items({currentItems}) {
             {currentItems && currentItems.map((item, index) => (
                 <div className="col-4" key={index}>
                     <div className='product-items m-5 h-80 rounded-xl hover:shadow-2xl shadow-md'>
-                        <Link to={`/products/${item.id}`}>
+                        <Link to={`/allproducts/${item.id}`}>
                             <img src={item.image} alt={item.name} className="w-auto h-44 p-3" />
                             <h3 className='mx-3 font-bold text-lg '>{item.name}</h3>
                         </Link>
                         <p className='mx-3 text-xs mb-4 h-7 opacity-40'>{item.brand}</p>
                         <p className='mx-3 text-xl'>${item.price}</p>
                         <div>
-                            <Link to={`/products/${item.id}/edit`}>
+                            <Link to={`/allproducts/${item.id}/edit`}>
                                 <button className='rounded-full border border-black border-solid hover:bg-black hover:text-white px-4 py-1 mx-2 font-bold float-right'>Edit</button>
                             </Link>
                             {/* <button className='rounded-full border border-black border-solid hover:bg-black hover:text-white px-2 py-1 mx-2 font-bold float-right' onClick={handleDelete}>Delete</button> */}
@@ -51,7 +51,7 @@ export default function ProductList({ itemsPerPage }) {
                     <p className="text-left text-xl w-72 font-bold px-1 py-3">ALL PRODUCTS</p> 
                 </div>
                 <div className='text-right mr-5'>
-                    <Link to={`/products/add`}>
+                    <Link to={`/allproducts/add`}>
                         <button className='font-bold rouded-full border-black border border-solid p-3 hover:shadow-md rounded-full mx-10 hover:bg-black hover:text-white'>Add new product</button>
                     </Link>
                 </div>

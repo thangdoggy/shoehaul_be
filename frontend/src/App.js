@@ -10,6 +10,10 @@ import {
   ProductInfo,
 } from "./pages";
 
+import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
+import FormInput from "./components/FormInput";
+import FormChange from "./components/FormChange";
 import {
   Login,
   CreateAccount,
@@ -39,6 +43,10 @@ const App = () => {
             <Route path="/newpassword" element={<NewPassword />} />
             <Route path="/userinfo" element={<UserInfo />} />
             { <Route path="/dashboard" element = {<Dashboard />} />}
+            { <Route path="/allproducts" element = {<ProductList itemsPerPage={8} />} />}
+            { <Route path="/allproducts/:productID" element = {<ProductDetail />} />}
+            { <Route path="/allproducts/add" element = {<FormInput />} />}
+            { <Route path="/allproducts/edit" element = {<FormChange />} />}
           </Routes>
         </div>
       </BrowserRouter>

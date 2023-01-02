@@ -29,7 +29,7 @@ const AdminHeader = () => {
         <div className="mx-5">
             <div className="mx-4 text-xs opacity-30">Manage</div>
             <NavLink
-                to="/products"
+                to="/allproducts"
                 className={
                     ({ isActive }) => (
                         isActive ? activeLink : normalLink
@@ -42,7 +42,7 @@ const AdminHeader = () => {
         <div className="mx-5">
             <div className="mx-4 text-xs opacity-30">Revenue</div>
             <NavLink
-                to="/"
+                to="/dashboard"
                 className={
                     ({ isActive }) => (
                         isActive ? activeLink : normalLink
