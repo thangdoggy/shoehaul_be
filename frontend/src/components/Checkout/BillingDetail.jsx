@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createOrder } from "../../actions/orderActions";
 import Swal from "sweetalert2";
+import { getUserDetails } from "../../actions/userActions";
 const styles = {
   input: {
     width: "730px",
@@ -23,14 +24,21 @@ export default function BillingDetail() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user } = userDetails;
+  const orderItems = user.cartItems;
+  useEffect(() => {
+    dispatch(getUserDetails("profile"));
+  }, [dispatch]);
+
   const handleClick = (event) => {
     event.preventDefault();
-    document.getElementById("name").value = userInfo.name;
-    document.getElementById("phone").value = userInfo.phone;
-    document.getElementById("address").value = userInfo.address;
+    document.getElementById("name").value = user.name;
+    document.getElementById("phone").value = user.phone;
+    document.getElementById("address").value = user.address;
   };
   const [selectedPayment, setSelectedPayment] = React.useState("COD");
-  const paymentMethod = [
+  const payment = [
     {
       id: 1,
       name: "COD",
@@ -43,12 +51,20 @@ export default function BillingDetail() {
   const handleChange = (e) => {
     setSelectedPayment(e.target.value);
   };
-  const handleOrder = () => {
+  const handleOrder = (e) => {
+    e.preventDefault();
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
-    const address = document.getElementById("address").value;
+    const shippingAddress = document.getElementById("address").value;
     const note = document.getElementById("note").value;
-    if (name === "" || phone === "" || address === "") {
+    const payoption = document.getElementsByName("payment");
+    var paymentMethod = "";
+    for (let i = 0; i < payoption.length; i++) {
+      if (payoption[i].checked) {
+        paymentMethod = payoption[i].value;
+      }
+    }
+    if (name === "" || phone === "" || shippingAddress === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -58,20 +74,11 @@ export default function BillingDetail() {
       const totalPrice = userInfo.cartItems.reduce((accumulator, object) => {
         return accumulator + object.price;
       }, 0);
-        dispatch(
-          createOrder({
-            orderItems: userInfo.cartItems,
-            shippingAddress: address,
-            paymentMethod: paymentMethod,
-            totalPrice: totalPrice,
-            note: note,
-          })
-        );
-
       Swal.fire("Good job!", "You made purchase successfully!", "success");
-      setInterval(() => {
-        window.location.href = "/";
-      }, 1500);
+        dispatch(
+          createOrder(orderItems, shippingAddress, paymentMethod, totalPrice, note, user._id)
+        );
+        
     }
   };
   const active =
@@ -80,10 +87,10 @@ export default function BillingDetail() {
     "pl-10 shadow-lg p-2.5 w-96 mb-5 rounded-3xl text-left bg-white transition cursor-pointer";
   return (
     <>
-      <form className="col-span-3">
+      <form className="col-span-3" onSubmit={handleOrder}>
         <h1 className="text-3xl  mt-5 mb-10 font-bold">Billing Details</h1>
         <div className="col-span-2">
-          <label for="name" />
+          <label htmlFor="name" />
           <input
             id="name"
             type="text"
@@ -92,7 +99,7 @@ export default function BillingDetail() {
             style={styles.input}
             required
           />
-          <label for="phone" />
+          <label htmlFor="phone" />
           <input
             id="phone"
             type="text"
@@ -101,7 +108,7 @@ export default function BillingDetail() {
             style={styles.input}
             required
           />
-          <label for="address" />
+          <label htmlFor="address" />
           <input
             id="address"
             type="text"
@@ -138,7 +145,7 @@ export default function BillingDetail() {
         </button>
         <h2 className="mt-10 text-2xl mb-10 font-bold">Payment Method</h2>
         <ul>
-          {paymentMethod.map((payment) => (
+          {payment.map((payment) => (
             <div
               className={selectedPayment === payment.name ? active : normal}
               style={styles.input}
@@ -170,7 +177,7 @@ export default function BillingDetail() {
           type="submit"
           className="block mt-5 font-bold text-base object-fill rounded-3xl p-2.5 mb-10 hover:bg-black hover:text-white shadow-lg transition ease-in"
           style={styles.default_details}
-          onClick={handleOrder}
+          
         >
           MAKE PURCHASE NOW
         </button>

@@ -22,7 +22,7 @@ import {
 } from '../constants/orderConstants'
 import { logout } from './userActions'
 
-export const createOrder = (order) => async (dispatch, getState) => {
+export const createOrder = (orderItems, shippingAddress, paymentMethod, totalPrice, note, userID) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
@@ -39,17 +39,18 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`http://localhost:5000/api/orders`, order, config)
+    const { data } = await axios.post(`http://localhost:5000/api/orders`, {orderItems, shippingAddress, paymentMethod, totalPrice, note, userID}, config)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
       payload: data,
     })
-    dispatch({
-      type: CART_CLEAR_ITEMS,
-      payload: data,
-    })
-    localStorage.removeItem('cartItems')
+    // dispatch({
+    //   type: CART_CLEAR_ITEMS,
+    //   payload: data,
+    // })
+    //localStorage.removeItem('cartItems')
+    localStorage.setItem('orderItems', JSON.stringify(data))
   } catch (error) {
     const message =
       error.response && error.response.data.message

@@ -36,9 +36,6 @@ const Header = () => {
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(getUserDetails("profile"));
-  }, []);
   let login;
   if (!userInfo) {
     login = (

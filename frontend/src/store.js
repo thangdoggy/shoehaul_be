@@ -21,6 +21,7 @@ import {
   userUpdateReducer,
 } from "./reducers/userReducers";
 import { cartReducer } from "./reducers/cartReducers";
+import { orderCreateReducer } from "./reducers/orderReducers";
 // import {
 //   orderCreateReducer,
 //   orderDetailsReducer,
@@ -46,7 +47,8 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  order: orderCreateReducer
   //   orderCreate: orderCreateReducer,
   //   orderDetails: orderDetailsReducer,
   //   orderPay: orderPayReducer,
@@ -74,6 +76,14 @@ const initialState = {
     totalPrice: 0,
     VATotal: 0,
     SUM: 0,
+  },
+  order: {
+    orderItems: cartItemsFromStorage,
+    shippingAddress: "",
+    paymentMethod: "",
+    totalPrice: 0,
+    note: "",
+    userID: "",
   }
 };
 

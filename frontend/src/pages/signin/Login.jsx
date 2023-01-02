@@ -76,13 +76,14 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfo) {
-      if (userInfo.isAdmin) {
-        navigate("/dashboard");
-      } else {
-        navigate(-1);
-      }
-    }
+    // if (userInfo) {
+    //   if (userInfo.isAdmin) {
+    //     navigate("/");
+    //   } else {
+    //     navigate(-1);
+    //   }
+    // }
+    if (userInfo) navigate(-1);
   }, [userInfo]);
 
   const submitHandler = (e) => {
@@ -110,7 +111,9 @@ export default function Login() {
           style={styles.login_background}
         >
           <h1 className="text-3xl mt-10 mb-5 font-bold">Welcome back to SHOESHAUL</h1>
-          <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}
+            className = "mt-10"
+          >
             {/* <div id="login-option" className="flex justify-center flex-1">
               <div id="user-option" className="pb-5 text-2xl">
                 <input

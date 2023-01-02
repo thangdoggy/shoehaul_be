@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel.js");
+const generateToken = require("../utils/generateToken.js");
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -9,34 +10,54 @@ const addOrderItems = asyncHandler(async (req, res) => {
     orderItems,
     shippingAddress,
     paymentMethod,
-    note,
     totalPrice,
+    note,
+    userID,
   } = req.body
 
-  if (orderItems && orderItems.length === 0) {
+  const order = await Order.create({
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    totalPrice,
+    note,
+    userID
+  })
+
+  if (orderItems && orderItems.length === 0 && !order) {
     res.status(400)
     throw new Error('No order items')
     return
-  } else {
-    const order = new Order({
-      orderItems,
-      user: req.user._id,
-      shippingAddress,
-      paymentMethod,
-      note,
-      totalPrice,
+  } 
+  else {
+    res.status(201).json({
+      _id: order._id,
+      orderItems: order.orderItems,
+      shippingAddress: order.shippingAddress,
+      paymentMethod: order.paymentMethod,
+      totalPrice: order.totalPrice,
+      note: order.note,
+      token: generateToken(order._id)
     })
+    // const order = new Order({
+    //   orderItems,
+    //   user: req.user._id,
+    //   shippingAddress,
+    //   paymentMethod,
+    //   note,
+    //   totalPrice,
+    // })
 
-    const createdOrder = await order.save()
-    user = await User.findById(req.user._id);
-    if(user && user.cartItems.length!=0)
-    {
-        user.cartItems=[];
-        const emptycartController=await user.save();
+    // const createdOrder = await order.save()
+    // user = await User.findById(req.user._id);
+    // if(user && user.cartItems.length!=0)
+    // {
+    //     user.cartItems=[];
+    //     const emptycartController=await user.save();
         
-    }
+    // }
 
-    res.status(201).json(createdOrder)
+    //res.status(201).json(createdOrder)
   }
 })
 

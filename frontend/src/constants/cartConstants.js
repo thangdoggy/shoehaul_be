@@ -4,3 +4,4 @@ export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const GET_TOTAL = "GET_TOTAL";
 export const SAVE_TO_CART = "SAVE_TO_CART";
+export const CART_CLEAR_ITEMS = "CART_CLEAR_ITEMS";
