@@ -49,13 +49,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
     // })
 
     // const createdOrder = await order.save()
-    // user = await User.findById(req.user._id);
-    // if(user && user.cartItems.length!=0)
-    // {
-    //     user.cartItems=[];
-    //     const emptycartController=await user.save();
+    user = await User.findById(req.user._id);
+    if(user && user.cartItems.length!=0)
+    {
+        user.cartItems=[];
+        const emptycartController=await user.save();
         
-    // }
+    }
 
     //res.status(201).json(createdOrder)
   }

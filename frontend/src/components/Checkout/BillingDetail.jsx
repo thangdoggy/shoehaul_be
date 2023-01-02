@@ -78,6 +78,10 @@ export default function BillingDetail() {
         dispatch(
           createOrder(orderItems, shippingAddress, paymentMethod, totalPrice, note, user._id)
         );
+        setInterval(() => {
+          window.location.href = "/";
+        }
+        , 1500);
         
     }
   };

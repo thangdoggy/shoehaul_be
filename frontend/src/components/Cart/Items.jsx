@@ -1,8 +1,10 @@
 import React from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import Swal from 'sweetalert2';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment, removeFromCart } from '../../actions/cartActions';
+import { getUserDetails, updateUserProfile } from '../../actions/userActions';
+import { useEffect } from 'react';
 const styles = {
   select: {
     width: '75px',
