@@ -87,17 +87,25 @@ export default function Login() {
   }, [userInfo]);
 
   const submitHandler = (e) => {
+    if(userInfo && loading)
+    {
+      console.log(userInfo.name);
+    }
+    else if (error)
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error,
+      });
+    }
     e.preventDefault();
     dispatch(login(email, password));
-    if(error)
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: error,
-    })
+
   };
 
   return (
+    
     <>
       <Header />
       <div
@@ -186,5 +194,6 @@ export default function Login() {
       </div>
       <Footer />
     </>
+    
   );
 }
