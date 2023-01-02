@@ -78,7 +78,7 @@ export default function Login() {
   useEffect(() => {
     // if (userInfo) {
     //   if (userInfo.isAdmin) {
-    //     navigate("/");
+    //     navigate("/dashboard");
     //   } else {
     //     navigate(-1);
     //   }

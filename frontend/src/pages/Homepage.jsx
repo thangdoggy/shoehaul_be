@@ -33,16 +33,15 @@ const Homepage = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  if(userInfo)
-    {
-      if(userInfo.isAdmin)
-      window.location.href= "http://localhost:3000/dashboard";
-    }
+  // if(userInfo)
+  //   {
+  //     if(userInfo.isAdmin)
+  //     window.location.href= "http://localhost:3000/dashboard";
+  //   }
 
   return (
     <div>
       <Header />
-
       <div
         className="bg-center bg-cover bg-no-repeat text-center my-20 py-40 bg-fixed"
         style={{
