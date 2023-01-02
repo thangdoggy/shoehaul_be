@@ -33,6 +33,11 @@ const Homepage = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  if(userInfo)
+    {
+      if(userInfo.isAdmin)
+      window.location.href= "http://localhost:3000/dashboard";
+    }
 
   return (
     <div>
